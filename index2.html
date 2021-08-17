@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TensorFlow.js OBD Demo</title>
+  <!-- Load TensorFlow.js-->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+  <!-- Load the coco-ssd model. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <!-- Load React. -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+ 
+ <style>
+ //body{background:#242424 url('https://unsplash.it/1000/1100/?random')no-repeat center center; height:150vh;
+//background-size:cover;}
+// video
+//{
+ // width: 100%;
+//  opacity:.65;
+//  min-height:100vh;
+//  margin:0 auto;
+//  position:fixed;
+//  background: transparent;
+//  border-radius: 5px;
+//  -webkit-transform: scaleX(-1);
+//  -moz-transform: scaleX(-1);
+//  -o-transform: scaleX(-1);
+//  transform: scaleX(-1);
+
+//  filter: FlipH;
+//  -ms-filter: "FlipH";
+//}
+ 
+ #myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index:-1;
+}
+ </style>
+ 
+</head> 
+
+<body >
+
+  <!--h1>Demo of TensorFlow.js Coco SSD's model object detection</h1-->
+  <!-- Load our React component. -->
+  <script src="detect.js" type="text/babel"></script>
+
+  <!-- We will put our React component inside this div. -->
+  <div id="root"></div>
+  <video autoplay loop id="myVideo">
+  <source id="videoId" src="http://demo.indomaker.com/tes/iklantrotoar.mp4" type="video/mp4">
+  Your browser does not support the video tag. 
+</video>
+
+
+  
+</body>
+
+</html>
