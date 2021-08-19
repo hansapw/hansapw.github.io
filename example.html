@@ -99,19 +99,19 @@
    }
    }
    */
-    //var vid2 = videojs('vid2');
+    var vid2 = videojs('vid2');
 
    // vid1.muted(true);
-   // vid1.ads();
-   // vid1.vast({
-  //    url: 'https://vid.pubmatic.com/AdServer/AdServerServlet?adtype=13&pubId=157566&siteId=851482&adId=3940491&vadFmt=2&vminl=5&vmaxl=300&vh=640&vw=300&placement=1&vtype=1&vpos=1&vplay=2&vskip=0&vcom=0&vfmt=1+5+7&sec=1&gdpr=&gdpr_consent=&schain=SUPPLYCHAIN_GOES_HERE&us_privacy=&kadpageurl=INSERT_ENCODED_PAGEURL_HERE'
+    //vid1.ads();
+    //vid1.vast({
+     // url: 'https://vid.pubmatic.com/AdServer/AdServerServlet?adtype=13&pubId=157566&siteId=851482&adId=3940491&vadFmt=2&vminl=5&vmaxl=300&vh=640&vw=300&placement=1&vtype=1&vpos=1&vplay=2&vskip=0&vcom=0&vfmt=1+5+7&sec=1&gdpr=&gdpr_consent=&schain=SUPPLYCHAIN_GOES_HERE&us_privacy=&kadpageurl=INSERT_ENCODED_PAGEURL_HERE'
     //});
 
-    //vid2.muted(true);
-    //vid2.ads();
-    //vid2.vast({
-    //  url: 'https://vid.pubmatic.com/AdServer/AdServerServlet?adtype=13&pubId=157566&siteId=851482&adId=3940491&vadFmt=2&vminl=5&vmaxl=300&vh=840&vw=680&placement=1&vtype=1&vpos=1&vplay=2&vskip=0&vcom=0&vfmt=1+5+7&sec=1&gdpr=&gdpr_consent=1&schain=1&us_privacy=1&kadpageurl=INSERT_ENCODED_PAGEURL_HERE'
-    //});
+    vid2.muted(true);
+    vid2.ads();
+    vid2.vast({
+      url: 'https://vid.pubmatic.com/AdServer/AdServerServlet?adtype=13&pubId=157566&siteId=851482&adId=3940491&vadFmt=2&vminl=5&vmaxl=300&vh=840&vw=680&placement=1&vtype=1&vpos=1&vplay=2&vskip=0&vcom=0&vfmt=1+5+7&sec=1&gdpr=&gdpr_consent=1&schain=1&us_privacy=1&kadpageurl=INSERT_ENCODED_PAGEURL_HERE'
+    });
   </script>
   
   <script> 
@@ -148,12 +148,12 @@ var vids = [{
 
 playVideo = function(n) {
   vPlayer.src(vids[n]);
-  if (n==0){
+  //if (n==0){
   vPlayer.ads();
     vPlayer.vast({
       url: 'https://vid.pubmatic.com/AdServer/AdServerServlet?adtype=13&pubId=157566&siteId=851482&adId=3940491&vadFmt=2&vminl=5&vmaxl=300&vh=840&vw=680&placement=1&vtype=1&vpos=1&vplay=2&vskip=0&vcom=0&vfmt=1+5+7&sec=1&gdpr=&gdpr_consent=1&schain=1&us_privacy=1&kadpageurl=INSERT_ENCODED_PAGEURL_HERE'
     });
-	}
+	//}
 	
 	//if (n==1) cancelContentPlay(vPlayer);
 	//if (n==2) vPlayer.skipAds({});
