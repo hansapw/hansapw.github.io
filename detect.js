@@ -2,12 +2,13 @@ class App extends React.Component {
   // reference to both the video and canvas
   videoRef = React.createRef();
   canvasRef = React.createRef();
+  state = { text: ""};
 
   // we are gonna use inline style
   styles = {
     position: 'fixed',
-    left: 0,
-    top: 200,
+    left: 1,
+    top: 1,
 	//overflow: "hidden",
 	//width: "100vh"
 	//object-fit: "fill"
@@ -55,7 +56,9 @@ class App extends React.Component {
       // Draw the text last to ensure it's on top.
       ctx.fillStyle = "#000000";
       ctx.fillText(prediction.class, x, y);
+	  
 	  console.log(prediction.class+", "+prediction.score.toFixed(2)*100+"%");
+	  this.setState({ text: prediction.class });
       ctx.fillText(prediction.score.toFixed(2), x, y + height - textHeight);
     });
   };
@@ -112,8 +115,10 @@ class App extends React.Component {
           width="200"
           height="150"
         />
-        <canvas style={this.styles} ref={this.canvasRef} width="200" height="150" />
+        <canvas id="cvs" style={this.styles} ref={this.canvasRef} width="200" height="150" />
+		<p id="demo">{this.state.text}</p>
       </div>
+	  
     );
   }
 }
