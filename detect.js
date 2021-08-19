@@ -8,7 +8,7 @@ class App extends React.Component {
   styles = {
     position: 'fixed',
     left: 1,
-    top: 1,
+    top: 200,
 	//overflow: "hidden",
 	//width: "100vh"
 	//object-fit: "fill"
