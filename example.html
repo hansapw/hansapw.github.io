@@ -50,7 +50,7 @@
   <script src="lib/vast-client.js"></script>
   <script src="videojs.vast.js"></script>
 </head>
-<body>
+<body onload="myFunction()">
 <p id="flag" style="color:white;">0</p>
 <script src="detect.js" type="text/babel"></script>
  <div id="root"></div>
@@ -180,6 +180,11 @@ playVideo = function(n) {
 
 window.onload = function () {
 setInterval(function(){ cekrefresh() }, 3000);
+}
+	
+function myFunction() {
+  alert("Page is loaded");
+  setInterval(function(){ cekrefresh() }, 3000);
 }
 
 function cekrefresh() {  
