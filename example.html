@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Video.js VAST Example</title>
+<!-- Load TensorFlow.js-->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+  <!-- Load the coco-ssd model. -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <!-- Load React. -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+  
+  
+  <link href="http://vjs.zencdn.net/4.7.1/video-js.css" rel="stylesheet">
+  <link href="lib/videojs-contrib-ads/videojs.ads.css" rel="stylesheet" type="text/css">
+  <link href="videojs.vast.css" rel="stylesheet" type="text/css">
+
+  <style type="text/css">
+    .description {
+      background-color:#eee;
+      border: 1px solid #777;
+      padding: 10px;
+      font-size: .8em;
+      line-height: 1.5em;
+      font-family: Verdana, sans-serif;
+    }
+    .example-video-container {
+      //display: inline-block;
+	  position: fixed;
+	  //left: 400;
+	  
+	  z-index:-1;
+    }
+	
+	p {
+  color: white;
+  visibility: hidden;
+  //text-transform: uppercase;
+}
+	
+	
+  </style>
+  <!--[if lt IE 9]><script src="lib/es5.js"></script><![endif]-->
+  <script src="http://vjs.zencdn.net/4.7.1/video.js"></script>
+  <script src="lib/videojs-contrib-ads/videojs.ads.js"></script>
+
+  <script src="lib/vast-client.js"></script>
+  <script src="videojs.vast.js"></script>
+</head>
+<body>
+<p id="flag" style="color:white;">0</p>
+<script src="detect.js" type="text/babel"></script>
+ <div id="root"></div>
+
+
+  <!--div class="example-video-container"-->
+    <!--p class="description">With autoplay.</p-->
+
+    <video id="vid2" class="video-js" autoplay muted controls preload="auto"
+        data-setup='{}'        
+		style="width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;"
+        >
+      <source src="iklanwisata.mp4" type='video/mp4'>
+      <!--source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm'>
+      <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg'-->
+      <p>Video Playback Not Supported</p>
+    </video>
+  <!--/div-->
+<!--button onclick="myFunction()" type="button">Change Video</button><br-->
+<!--hr>
+<button onclick="playVideo(0)">play 0 (mp4)</button>
+<button onclick="playVideo(1)">play 1 (mp4)</button>
+<button onclick="playVideo(2)">play 2 (youtube)</button>
+<button onclick="playVideo(3)">iklan aqua</button>
+<hr-->
+
+<!--input type="checkbox" id="vehicle1" onclick="cb1()" name="vehicle1" value="Bike" style="position:absolute;margin-left: 10px;margin-top: 80px;">
+  <label for="vehicle1" style="position:absolute;margin-left: 30px;margin-top: 80px;color: white;"> with adScript</label <br-->
+  <!--input type="checkbox" id="vehicle2" name="vehicle2" value="Car" style="position:absolute;margin-left: 10px;margin-top: 100px;">
+  <label for="vehicle2" style="position:absolute;margin-left: 30px;margin-top: 100px;color: white;"> with adScript</label><br-->
+
+<div id="info"></div>
+  <script>
+  /*function cb1() {
+  var vid = document.getElementById("vid2");
+   var checkBox = document.getElementById("vehicle1");
+   if (checkBox.checked == true){
+    alert(vid.muted);
+    vid.muted = false;
+   }
+   }
+   */
+    //var vid2 = videojs('vid2');
+
+   // vid1.muted(true);
+   // vid1.ads();
+   // vid1.vast({
+  //    url: 'https://vid.pubmatic.com/AdServer/AdServerServlet?adtype=13&pubId=157566&siteId=851482&adId=3940491&vadFmt=2&vminl=5&vmaxl=300&vh=640&vw=300&placement=1&vtype=1&vpos=1&vplay=2&vskip=0&vcom=0&vfmt=1+5+7&sec=1&gdpr=&gdpr_consent=&schain=SUPPLYCHAIN_GOES_HERE&us_privacy=&kadpageurl=INSERT_ENCODED_PAGEURL_HERE'
+    //});
+
+    //vid2.muted(true);
+    //vid2.ads();
+    //vid2.vast({
+    //  url: 'https://vid.pubmatic.com/AdServer/AdServerServlet?adtype=13&pubId=157566&siteId=851482&adId=3940491&vadFmt=2&vminl=5&vmaxl=300&vh=840&vw=680&placement=1&vtype=1&vpos=1&vplay=2&vskip=0&vcom=0&vfmt=1+5+7&sec=1&gdpr=&gdpr_consent=1&schain=1&us_privacy=1&kadpageurl=INSERT_ENCODED_PAGEURL_HERE'
+    //});
+  </script>
+  
+  <script> 
+
+vPlayer = videojs('vid2', {
+  techOrder: ["html5", "youtube"],
+  autoplay: true,
+  sources: [{
+    type: "video/mp4",
+    src: "iklanwisata.mp4"
+  }]
+});
+vPlayer.on('playing', function(e) {
+  $("#info").html("playing...<br>url: " + vPlayer.currentSrc() + "<br>type:" + vPlayer.currentType());
+});
+
+var vids = [{
+    type: "video/mp4",
+    src: "roli.mp4"
+  },
+  {
+    type: "video/mp4",
+    src: "iklanmobil.mp4"
+  },
+  {
+    type: "video/mp4",
+    src: "iklanbaju.mp4"
+  },
+  {
+    type: "video/mp4",
+    src: "iklanaqua.mp4"
+  }
+];
+
+playVideo = function(n) {
+  vPlayer.src(vids[n]);
+  if (n==0){
+  vPlayer.ads();
+    vPlayer.vast({
+      url: 'https://vid.pubmatic.com/AdServer/AdServerServlet?adtype=13&pubId=157566&siteId=851482&adId=3940491&vadFmt=2&vminl=5&vmaxl=300&vh=840&vw=680&placement=1&vtype=1&vpos=1&vplay=2&vskip=0&vcom=0&vfmt=1+5+7&sec=1&gdpr=&gdpr_consent=1&schain=1&us_privacy=1&kadpageurl=INSERT_ENCODED_PAGEURL_HERE'
+    });
+	}
+	
+	//if (n==1) cancelContentPlay(vPlayer);
+	//if (n==2) vPlayer.skipAds({});
+	//if (n==3) cancelContentPlay(vPlayer);
+  vPlayer.play();
+  vPlayer.muted(false);
+  document.getElementById("flag").innerHTML = "1";
+}
+
+</script> 
+
+<script type="text/javascript">
+        var myPlayer = videojs("vid2");
+          videojs("vid2").ready(function(){
+          this.on("ended", function(){ 
+            //alert('Here I am');
+			document.getElementById("flag").innerHTML = "0";
+          });
+        });       
+     </script>
+
+<script>
+
+
+window.onload = function () {
+setInterval(function(){ cekrefresh() }, 3000);
+}
+
+function cekrefresh() {  
+ //alert("kk");
+var objek=document.getElementById("demo").innerHTML;
+var penanda=document.getElementById("flag").innerHTML;
+//if ((objek=="person")&&(penanda=="0")) playVideo(2);
+if ((objek=="cell phone")) playVideo(0);
+if ((objek=="car")) playVideo(1);
+if ((objek=="bottle")) playVideo(3);
+}
+</script>
+</body>
+</html>
+
