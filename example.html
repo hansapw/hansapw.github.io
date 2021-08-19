@@ -158,6 +158,7 @@ playVideo = function(n) {
 	//if (n==1) cancelContentPlay(vPlayer);
 	//if (n==2) vPlayer.skipAds({});
 	//if (n==3) cancelContentPlay(vPlayer);
+vPlayer.load();
   vPlayer.play();
   vPlayer.muted(false);
   document.getElementById("flag").innerHTML = "1";
